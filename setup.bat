@@ -1,0 +1,1 @@
+setx CORENLP_HOME "%cd%\stanfordnlp_resources"

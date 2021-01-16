@@ -1,3 +1,4 @@
+from src.definitions import ROOT_PATH
 from src.assertion_finder import AssertionFinder
 from src.textual_entailment import TextualEntailment
 from src.wolfram import WolframAPI
@@ -12,6 +13,7 @@ class Polygraph:
         self.hypothesis_tester = TextualEntailment()
 
     def run(self, captions: str) -> str:  # Both input and output strings must be valid JSON
+        captions = json.loads(captions)
         assertion_scores = self.assertion_finder.parse_captions(captions)
         print(assertion_scores)
         assertions = sorted(assertion_scores.items(), key=lambda x: x[1], reverse=True)[:self.top_n]
@@ -28,4 +30,8 @@ class Polygraph:
 
 if __name__ == "__main__":
     p = Polygraph()
-    p.run({"1:10": "Howdy", "2:15": "Howdy Again"})
+    with open(str(ROOT_PATH / "data/sample.txt")) as file:
+        print("".join(file.readlines()))
+        p.run("".join(file.readlines()))
+        file.close()
+

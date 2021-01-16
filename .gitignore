@@ -1,1 +1,4 @@
 /.idea
+/venv
+/stanfordnlp_resources
+**.pyc
