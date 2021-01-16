@@ -3,8 +3,8 @@ class AssertionFinder:
         pass
 
     def assertion_likelihood(self, sentence: str) -> float:
-        pass
+        return 0.5
 
     def parse_captions(self, captions: dict) -> dict:
-        return {k: self.assertion_likelihood(v) for k, v in captions}
+        return {k: self.assertion_likelihood(v) for k, v in captions.items()}
 
